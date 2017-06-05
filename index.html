@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+
 	<title>Trivia Game</title>
 
 	<!-- Reset -->
@@ -14,55 +15,85 @@
 
 	<!-- Viewport -->
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+
 </head>
+
 <body>
 
 	<!-- Header Div -->
-	<div class="container">
-		<div class="row">
-			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 myHeader">
-				<header>
-					<h3>How Well Do You Know China?</h3>
-				</header>
+	<header>
+		<div class="container">
+			<div class="row">
+				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 myHeader">
+					<h3 id="headerFont">How Well Do You Know China?</h3>
+				</div>
 			</div>
 		</div>
-	</div>
+	</header>
 
-	<div class="container">
-		<button class="startButton btn btn-primary">Start Game</button>
-		<div id="showCountDown"></div>
-		<h3 id="triviaQuestion"></h3>
+	<section id="backgroundSplash">
 
-		<div id="multipleChoice">
-			<div class="list-group choices">
-				<a id="a" class="list-group-item"></a>
-				<a id="b" class="list-group-item"></a>
-				<a id="c" class="list-group-item"></a>
-				<a id="d" class="list-group-item"></a>
+		<div id="pageContent">
+
+			<div class="container bodyContent">
+
+				<!-- Start button -->
+				<div class="row pageRow">
+					<div class="col-xs-1 col-xs-offset-5 col-sm-1 col-sm-offset-5 col-md-1 col-md-offset-5 col-lg-1 col-lg-offset-5 button">
+						<button class="startButton btn btn-primary">Start Game</button>
+					</div>
+				</div>
+				
+				<!-- Counter -->
+				<div id="showCountDown"></div>
+
+				<!-- Question head -->
+				<h3 id="triviaQuestion"></h3>
+
+				<!-- Choice table -->
+				<div id="multipleChoice">
+					<div class="list-group choices">
+						<a id="a" class="list-group-item"></a>
+						<a id="b" class="list-group-item"></a>
+						<a id="c" class="list-group-item"></a>
+						<a id="d" class="list-group-item"></a>
+					</div>
+
+					<!-- Results panel -->
+					<div class="panel panel-default results">
+						<div class="panel-heading">Your Trivia Results</div>
+						<div class="panel-body">
+							<ul class="list-group">
+			    				<li id="correct"></li>
+								<li id="wrong"></li>
+								<li id="unanswered"></li>
+							</ul>
+		  				</div>
+					</div>
+				</div>
+
+				<!-- Reset button -->
+				<div class="row pageRow">
+					<div class="col-xs-1 col-xs-offset-5 col-sm-1 col-sm-offset-5 col-md-1 col-md-offset-5 col-lg-1 col-lg-offset-5 button">
+						<button class="resetButton btn btn-secondary">Play Again!</button>
+					</div>
+				</div>
 			</div>
-			<div class="panel panel-default results">
-				<div class="panel-heading">Your Trivia Results</div>
-				<div class="panel-body">
-					<ul class="list-group">
-	    				<li id="correct"></li>
-						<li id="wrong"></li>
-						<li id="unanswered"></li>
-					</ul>
-  				</div>
-			</div>
+
 		</div>
-	</div>
+
+	</section>
 
 	<!-- Footer Div -->
-	<div class="container">
-		<div class="row">
-			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 myFooter">
-				<footer>
+	<footer>
+		<div class="container">
+			<div class="row">
+				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 myFooter">
 					© Copyright 2017 Jonathan Thompson
-				</footer>
+				</div>
 			</div>
 		</div>
-	</div>
+	</footer>
 
 <!-- jQuery CDN -->
 <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.0.js"></script>

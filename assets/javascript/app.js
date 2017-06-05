@@ -15,9 +15,9 @@ var trivia = {
 	"questions" : [
 		{
 			"question" : "Who was the first emperor of China?",
-			"answer" : "Emperor Qi Shihuangdi",
+			"answer" : "Emperor Qin Shi Huang",
 			"multipleChoice" : [
-				"Empress Dowager Cixi", "Emperor Qi Shihuangdi", "Emperor", "Emperor"
+				"Emperor Song Taizu", "Emperor Qin Shi Huang", "Emperor Yongle", "Emperor Tang Taizong"
 			]
 		},
 		{
@@ -35,7 +35,7 @@ var trivia = {
 			]
 		},
 		{
-			"question" : "What island was conceded at the end of the First Opium War?",
+			"question" : "What island was conceded in the treaty of Nanking?",
 			"answer" : "Hong Kong",
 			"multipleChoice" : [
 				"Macau", "Taiwan", "Diayou", "Hong Kong"
@@ -47,6 +47,20 @@ var trivia = {
 			"multipleChoice" : [
 				"Chang Kaishek", "Mao Zedong", "Sun Yatsen", "Li Zongren"
 			]
+		},
+		{
+			"question" : "What two dynasties were not of the Han ethnicity?",
+			"answer" : "Yuan and Qing",
+			"multipleChoice" : [
+				"Yuan and Qing", "Song and Tang", "Han and Sui", "Ming and Qin"
+			]
+		},
+		{
+			"question" : "Which Ming Emperor sent voyages to Africa?",
+			"answer" : "Yongle Emperor",
+			"multipleChoice" : [
+				"Tianqi Emperor", "Yongle Emperor", "Hongwu Emperor", "Xian Emperor"
+			]
 		}
 	]
 }
@@ -55,26 +69,29 @@ var trivia = {
 //display end result
 function results () {
 	
+	$('#showCountDown').hide();
 	$('#triviaQuestion').hide();
 	$('.choices').hide();
 	$('.results').show();
 	$('#correct').html("Correctly Answered " + correctAnswers);
 	$('#wrong').html("Wrongly Answered " + incorrectAnswers);
 	$('#unanswered').html("Unanswered " + unanswered);
+	$('.resetButton').show();
 }	
 
 //game start
 function start() {
 
+	$('.resetButton').hide();
 	askQuestion(questionCount);
-	counter = setInterval(countDownToNextQuestion,1000);
+	counter = setInterval(nextQuestionCount,1000);
 }
 
 //question display
 function askQuestion(questionCount) {
 	countdown = 30;
 	$('#multipleChoice').show();
-	if( questionCount < 5 ) {
+	if( questionCount < 7 ) {
 		console.log(trivia.questions[questionCount].question);
 		$('#triviaQuestion').html(trivia.questions[questionCount].question);
 
@@ -118,7 +135,6 @@ $('.list-group-item').on('click', function(){
 		console.log(" # of Correct Answers: " + correctAnswers);
 		questionCount++;
 		askQuestion(questionCount);
-		alert("You are correct!");
 	}
 
 	else if (checkIfCorrect($(this).html()) === false){
@@ -126,13 +142,12 @@ $('.list-group-item').on('click', function(){
 		console.log(" # of Incorrect Answers: " + incorrectAnswers);
 		questionCount++;
 		askQuestion(questionCount);
-		alert("You were incorrect!");
 	}
 });
 
 
 //timer
-function countDownToNextQuestion() {
+function nextQuestionCount() {
 	countdown--;
 
     $('#showCountDown').html('<h4>Time Remaining: ' + countdown + ' seconds</h4>');
@@ -144,11 +159,11 @@ function countDownToNextQuestion() {
         //time up
         unanswered++;
         console.log(" # of Unanswered: " + unanswered);
-        console.log('Time Up!')
+        console.log('Your Time is Up!')
 
         questionCount++;
 
-        if ( questionCount == 5 ) {
+        if ( questionCount == 7 ) {
         	clearInterval(counter);
         	results();
         }
@@ -162,3 +177,10 @@ function countDownToNextQuestion() {
         }
     }
 }
+
+//reset
+$(document).ready(function() {
+    $('.resetButton').click(function() {
+        location.reload();
+    });
+});  
